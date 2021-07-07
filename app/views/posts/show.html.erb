@@ -1,0 +1,13 @@
+<h1> <%= @post.title %> </h1>
+
+<h2>Author: <%= link_to @post.blogger.name, @post.blogger %> </h2>
+
+<h2> Destination: <%= link_to @post.destination.name, @post.destination %>
+
+<h2> Total Likes: <%= @post.likes %></h2>
+
+<%= form_tag like_post_path(@post.id) %>
+    <%= submit_tag "Like!" %>
+ 
+<h2> Content:</h2>
+<p> <%= @post.content %></p>

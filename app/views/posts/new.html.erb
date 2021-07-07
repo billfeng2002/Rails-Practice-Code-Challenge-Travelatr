@@ -1,0 +1,27 @@
+<h1> Create a new post </h1>
+<%= form_with model: @post do |t|%>
+    <%=t.label :blogger_id, "Blogger"%>
+    <%=t.collection_select :blogger_id, Blogger.all, :id, :name %>
+    <br>
+    <%=t.label :destination_id, "Destination"%>
+    <%=t.collection_select :destination_id, Destination.all, :id, :name %>
+    <br>
+
+    <%=t.label :title, "Title"%>
+    <%=t.text_field :title, required: true %>
+    <br>
+    <%=t.label :content, "Content"%>
+    <br>
+    <%=t.text_area :content, size: "70x5", minlength: "100" %>
+    <br>
+    <%=t.submit "Create Post"%>
+<% end %>
+
+<% if(@post.errors.full_messages.count>0) %>
+    <%= "#{@post.errors.full_messages.count} errors"%> <br>
+    <% @post.errors.full_messages.each do |message|%>
+        <p> <%=message%> </p>
+    <% end %>
+        
+<% end %>
+
