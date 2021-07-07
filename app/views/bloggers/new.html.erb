@@ -1,0 +1,23 @@
+<h1> Create a new blogger </h1>
+<%= form_with model: @blogger do |t|%>
+    <%=t.label :name, "Name"%>
+    <%=t.text_field :name %>
+    <br>
+    <%=t.label :age, "Age"%>
+    <%=t.number_field :age, in: 1..150%>
+    <br>
+    <%=t.label :bio, "Bio"%>
+    <br>
+    <%=t.text_area :bio, size: "70x5", minlength: "30" %>
+    <br>
+    <%=t.submit "Create Blogger"%>
+<% end %>
+
+<% if(@blogger.errors.full_messages.count>0) %>
+    <%= "#{@blogger.errors.full_messages.count} errors"%> <br>
+    <% @blogger.errors.full_messages.each do |message|%>
+        <p> <%=message%> </p>
+    <% end %>
+        
+<% end %>
+
